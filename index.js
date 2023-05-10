@@ -11,8 +11,8 @@ import cors from "cors";
 import multer from "multer";
 import dotenv from "dotenv";
 
-// const BASE_URL = process.env.BASE_URL;
-// const PORT = process.env.PORT || 8800;
+const BASE_URL = process.env.BASE_URL;
+const PORT = process.env.PORT || 8800;
 
 //MIDDLEWARES
 app.use((req, res, next) => {
@@ -23,7 +23,7 @@ app.use(express.json());
 dotenv.config();
 
 app.use(cors({
-    origin: "http://localhost:5173",
+    origin: BASE_URL,
 }));
 app.use(cookieParser());
 
@@ -50,6 +50,6 @@ app.use("/api/comments/", commentRoutes)
 app.use("/api/likes/", likeRoutes)
 app.use("/api/relationships/", relationshipRoutes)
 
-app.listen(8800, () => {
+app.listen(PORT, () => {
     console.log("API working");
 })
