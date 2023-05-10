@@ -9,8 +9,10 @@ import relationshipRoutes from "./routes/relationships.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import multer from "multer";
-const BASE_URL = process.env.BASE_URL;
-const PORT = process.env.PORT || 8800;
+import dotenv from "dotenv";
+
+// const BASE_URL = process.env.BASE_URL;
+// const PORT = process.env.PORT || 8800;
 
 //MIDDLEWARES
 app.use((req, res, next) => {
@@ -18,8 +20,10 @@ app.use((req, res, next) => {
     next();
 })
 app.use(express.json());
+dotenv.config();
+
 app.use(cors({
-    origin: BASE_URL
+    origin: "http://localhost:5173",
 }));
 app.use(cookieParser());
 
@@ -46,6 +50,6 @@ app.use("/api/comments/", commentRoutes)
 app.use("/api/likes/", likeRoutes)
 app.use("/api/relationships/", relationshipRoutes)
 
-app.listen(PORT, () => {
+app.listen(8800, () => {
     console.log("API working");
 })
