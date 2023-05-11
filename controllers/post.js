@@ -3,7 +3,6 @@ import jwt from "jsonwebtoken";
 import { db } from "../connectToDB.js";
 
 export const getPosts = (req, res) => {
-    const userId = req.query.userId;
     const token = req.cookies.accessToken;
     if (!token) return res.status(401).json("Not logged in!");
 
@@ -29,7 +28,6 @@ export const getPosts = (req, res) => {
 };
 export const getPost = (req, res) => {
     const userId = req.query.userId;
-    // const userId = req.params.userId;
     const token = req.cookies.accessToken;
     if (!token) return res.status(401).json("Not logged in!");
 

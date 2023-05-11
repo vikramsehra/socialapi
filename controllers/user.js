@@ -9,7 +9,7 @@ export const getUser = (req, res) => {
         if (err) return res.status(500).json(err);
 
         // const { password, ...info } = data[0];
-        return res.json(data);
+        return res.status(200).json(data);
     })
 }
 export const getUsers = (req, res) => {
@@ -19,7 +19,7 @@ export const getUsers = (req, res) => {
         if (err) return res.status(500).json(err);
 
         // const { password, ...info } = data;
-        return res.json(data);
+        return res.status(200).json(data);
     })
 }
 
@@ -44,7 +44,7 @@ export const updateUser = (req, res) => {
         db.query(q, values, (err, data) => {
             if (err) return res.status(500).json(err);
 
-            if (data.affectedRows > 0) return res.json("Updated!");
+            if (data.affectedRows > 0) return res.status(200).json("Updated!");
 
             return res.status(403).json("You can update only your post!");
         });
